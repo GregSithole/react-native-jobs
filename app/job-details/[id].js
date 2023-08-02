@@ -7,6 +7,8 @@ import { Company, JobAbout, JobFooter, JobTabs, ScreenHeaderBtn, Specifics } fro
 import { COLORS, icons, SIZES } from '../../constants';
 import useFetch from '../../hook/useFetch';
 
+const tabs = ['About', 'Qualifications', 'Responsibilities']
+
 const JobDetails = () => {
 
 	const params = useLocalSearchParams();
@@ -17,9 +19,21 @@ const JobDetails = () => {
 	});
 
 	const [refreshing, setRefreshing] = useState(false);
+	const [activeTab, setActiveTab] = useState(tabs[0]);
 
 	const onRefresh = () => {
 
+	}
+
+	const displayTabContent = () => {
+		switch (activeTab) {
+			case "Qualifications":
+				return <Specifics title='Qualifications' points={data[0].job_highlights?.qualification ?? ['N/A']} />
+			case "About":
+				break;
+			case "Responsibilities":
+				break;
+		}
 	}
 
 	return (
@@ -60,8 +74,12 @@ const JobDetails = () => {
 							/>
 
 							<JobTabs
-
+								tabs={tabs}
+								activeTab={activeTab}
+								setActiveTab={setActiveTab}
 							/>
+
+							{displayTabContent()}
 						</View>
 					)}
 				</ScrollView>
