@@ -19,7 +19,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
 
 			<View style={styles.searchContainer}>
 				<View style={styles.searchWrapper}>
-					<TextInput style={styles.searchInput} value={searchTerm} onChange={(text) => { setSearchTerm(text) }} placeholder='What are you looking for?' placeholderTextColor="#b6b6b6" />
+					<TextInput style={styles.searchInput} value={searchTerm} onChangeText={(text) => { setSearchTerm(text) }} placeholder='What are you looking for?' placeholderTextColor="#b6b6b6" />
 				</View>
 
 				<TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
